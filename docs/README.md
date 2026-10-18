@@ -18,7 +18,7 @@ This folder holds all project documents, one folder per lifecycle stage. v2.0 do
 |---|---|---|---|
 | 1. Requirements | `1-requirements/` | `BRD.md`, `use-cases.md`, `requirements.md` | Approved 2026-10-17 |
 | 2. Design | `2-design/` | `design.md` | Approved 2026-10-17 |
-| 3. Development | `3-development/` | `dev-1.md` … `dev-5.md` | Dev-1 awaiting review |
+| 3. Development | `3-development/` | `dev-1.md` … `dev-5.md` | Dev-1 done · Dev-2 awaiting review |
 | 4. QA | `4-qa/` | `test-plan.md`, `traceability.md`, `qa-report.md` | Not started |
 | 5. Deployment | `5-deployment/` | `release-notes-v1.0.md` | Not started |
 

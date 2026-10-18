@@ -23,11 +23,18 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg://cite:cite@db:5432/cite
       CORS_ORIGINS: '["http://localhost:3000"]'
+      # Local development: debug endpoints on unless .env says otherwise.
+      DEBUG_ENDPOINTS: ${DEBUG_ENDPOINTS:-true}
+      # Used by `docker compose exec backend pytest`
+      TEST_DATABASE_URL: postgresql+psycopg://cite:cite@db:5432/cite_test
     ports:
       - "8000:8000"
     volumes:
       - ./backend/app:/app/app
       - ./backend/tests:/app/tests
+      - ./backend/alembic:/app/alembic
+      # Embedding model download (~130 MB) is cached here across restarts.
+      - models:/models
     depends_on:
       db:
         condition: service_healthy
@@ -47,3 +54,4 @@ services:
 
 volumes:
   pgdata:
+  models:

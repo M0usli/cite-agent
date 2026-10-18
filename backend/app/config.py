@@ -1,4 +1,5 @@
 from functools import lru_cache
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -14,6 +15,16 @@ class Settings(BaseSettings):
     anthropic_api_key: str = ""
     anthropic_model: str = "claude-sonnet-5-5"
     tavily_api_key: str = ""
+
+    # "bge" = local sentence-transformers model; "hashing" = no-download fake for tests/CI.
+    embedding_provider: Literal["bge", "hashing"] = "bge"
+    embedding_model: str = "BAAI/bge-small-en-v1.5"
+
+    # Ingestion limits (FR-01) and chunking (FR-03)
+    max_upload_mb: int = 20
+    max_pages: int = 50
+    chunk_size: int = 1000
+    chunk_overlap: int = 200
 
     debug_endpoints: bool = False
 

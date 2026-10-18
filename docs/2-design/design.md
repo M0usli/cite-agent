@@ -143,6 +143,7 @@ erDiagram
         int page_count
         enum status "processing|ready|failed"
         int[] skipped_pages
+        int chunk_count "added in Dev-2 for AC-07"
         text error
         timestamptz created_at
     }

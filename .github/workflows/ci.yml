@@ -10,6 +10,23 @@ jobs:
     defaults:
       run:
         working-directory: backend
+    services:
+      postgres:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: cite
+          POSTGRES_PASSWORD: cite
+          POSTGRES_DB: cite_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U cite -d cite_test"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      TEST_DATABASE_URL: postgresql+psycopg://cite:cite@localhost:5432/cite_test
+      EMBEDDING_PROVIDER: hashing
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
