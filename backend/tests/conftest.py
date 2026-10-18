@@ -8,6 +8,7 @@ TEST_DATABASE_URL = os.environ.get(
 )
 os.environ["DATABASE_URL"] = TEST_DATABASE_URL
 os.environ["EMBEDDING_PROVIDER"] = "hashing"
+os.environ["SEARCH_PROVIDER"] = "fake"  # no real web calls in tests (NFR-09)
 
 import pytest  # noqa: E402
 from alembic import command  # noqa: E402

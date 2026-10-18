@@ -14,6 +14,7 @@ dependencies = [
     "alembic>=1.13",
     "pymupdf>=1.24",
     "python-multipart>=0.0.9",
+    "httpx2>=2.13",
 ]
 
 [project.optional-dependencies]
@@ -23,7 +24,6 @@ embeddings = [
 ]
 dev = [
     "pytest>=8.0",
-    "httpx2>=2.13",
     "ruff>=0.6",
 ]
 

@@ -15,6 +15,9 @@ class Settings(BaseSettings):
     anthropic_api_key: str = ""
     anthropic_model: str = "claude-sonnet-5-5"
     tavily_api_key: str = ""
+    # "tavily" = real web search; "fake" = canned results, no network (tests/offline).
+    search_provider: Literal["tavily", "fake"] = "tavily"
+    web_search_timeout_s: float = 8.0
 
     # "bge" = local sentence-transformers model; "hashing" = no-download fake for tests/CI.
     embedding_provider: Literal["bge", "hashing"] = "bge"

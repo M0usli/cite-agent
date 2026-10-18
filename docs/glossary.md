@@ -34,4 +34,8 @@ Short, plain explanations for interviews. New terms are added the first time the
 
 **Source IDs (Cite-specific).** Each tool result gets a short label (D1 for a document chunk, W1 for a web result). Claude cites only these labels and our code turns them into real citations, so Claude can't invent a page number or URL.
 
+**JSON Schema / `input_schema`.** A standard way to describe the shape of JSON data ("an object with a required string `query` and an optional integer `top_k` from 1 to 10"). Each tool definition sent to Claude includes one, so Claude knows how to call the tool. We generate it from the same Pydantic model that validates Claude's input, so the description and the check can never drift apart.
+
+**Abstract syntax tree (AST).** Python can parse `2 + 3 * 4` into a tree (Add → 2, Multiply → 3, 4) without running it. The calculator walks that tree and only allows number and math nodes, so text like `__import__('os')` is rejected before anything runs. That's why it's safe where `eval()` is not.
+
 **LLM-as-judge.** Using an LLM with a clear scoring rubric to grade answers against a reference answer. It lets us score 25+ free-text answers automatically instead of by hand. We use it only in evaluation, never in the answer itself.
